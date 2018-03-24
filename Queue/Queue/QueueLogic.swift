@@ -50,7 +50,10 @@ public class Queue{
     func showdata(){
    
         for i in 0..<size{
-            print("\(queue[front+i%5])")
+            print(" o ")
+            print(" | ")
+            print("/ \\")
+           
         }
     
 }
