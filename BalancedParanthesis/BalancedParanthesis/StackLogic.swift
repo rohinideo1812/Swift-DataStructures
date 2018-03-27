@@ -1,19 +1,21 @@
-//
-//  StackLogic.swift
-//  BalancedParanthesis
-//
-//  Created by BridgeLabz on 22/03/18.
-//  Copyright © 2018 BridgeLabz. All rights reserved.
-//
+/******************************************************************************
+ *  Purpose: Stack functions.
+ *
+ *  @author Rohini
+ *  @version 4.0
+ *  @since   22-03-2018
+ *
+ ******************************************************************************/
+
 
 import Foundation
-public class stacks1{
+public class Stacks1{
     var stack=Array(repeatElement("", count: 5))
     var top = 0
     func push(data : String){
         
         if top == stack.count{
-            print("error")
+            print("Stack Overflow")
             
         }
         else{
@@ -23,7 +25,7 @@ public class stacks1{
     }
     func pop(){
         if isEmpty(){
-            print("ERROR")
+            print("Stack underflow")
         }
         else{
             var data = ""
@@ -41,10 +43,10 @@ public class stacks1{
         }
     }
     
-    func acceptinputstring()->String{
+    func acceptInputString()->String{
         if let input=readLine(){
             if Int(input) != nil{
-                print("Error")
+                print("Entered value is not a string type")
             }
             else{
                 return input

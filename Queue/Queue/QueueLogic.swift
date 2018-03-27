@@ -1,10 +1,11 @@
-//
-//  QueueLogic.swift
-//  Queue
-//
-//  Created by BridgeLabz on 22/03/18.
-//  Copyright © 2018 BridgeLabz. All rights reserved.
-//
+/******************************************************************************
+ *  Purpose: Functions of Queue.
+ *
+ *  @author Rohini
+ *  @version 4.0
+ *  @since   22-03-2018
+ *
+ ******************************************************************************/
 
 import Foundation
 public class Queue{
@@ -49,13 +50,21 @@ public class Queue{
     }
     func showdata(){
    
-        for i in 0..<size{
-            print(" o ")
-            print(" | ")
-            print("/ \\")
+        for _  in 0..<size{
+            print("  o  ")
+            print(" /|\\  ")
+            print(" / \\")
            
         }
-    
-}
+        func enqueuepriority(){
+            let i = 0
+            let j = 1
+            queue[i] = j
+            rear = (rear + 1) % 5
+            size += 1
+            }
+        }
+        }
 
-}
+
+
