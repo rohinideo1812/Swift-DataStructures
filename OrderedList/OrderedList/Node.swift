@@ -8,11 +8,11 @@
  ******************************************************************************/
 
 import Foundation
-class Node <T:Equatable>{
-
-    var value: T?
-    var next: Node?
-
-
+class Node<T : Comparable>{
+    var value:T
+    var next:Node<T>?
+    init(value:T) {
+        self.value = value
+    }
 }
 

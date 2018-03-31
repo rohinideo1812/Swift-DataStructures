@@ -8,24 +8,27 @@
  ******************************************************************************/
 
 import Foundation
-let array: NSArray = []
+var array = [Int]()
 var list = LinkedList<Int>()
  let path = "/Users/bridgelabz/Documents/Swift-DataStructures/OrderedList/OrderedList/File.txt"
 
     do {
-      
+
         let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
         let scanner = Scanner(string: content)
         var value = 0
         while scanner.scanInt(&value) {
-            list.insert(value: value)
+            array.append(value)
         }
-        
+
     } catch _ as NSError {
         print("nill")
     }
+array.sort()
+for i in 0..<array.count{
+    list.insert(value: array[i])
+}
 list.show()
-
 print("Enter the element to be searched")
 var search = list.acceptinput()
 var result = list.search(value: search)
@@ -41,7 +44,7 @@ else{
 }
 
 list.show()
-let string = list.getstring(list: list)
+let string = list.getstring(list : list)
 do {
     try string.write(toFile: path, atomically: false, encoding: String.Encoding.utf8)
 }
@@ -49,9 +52,6 @@ catch {
     print("ERROR")
 
 }
-
-
-
 
 
 

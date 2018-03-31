@@ -10,7 +10,7 @@
 import Foundation
 
 class LinkedList<T : Comparable>{
-    var head = Node<T>()
+    var head:Node<T>?
 
     func acceptinput()->String{
         if let input = readLine(){
@@ -25,75 +25,82 @@ class LinkedList<T : Comparable>{
     
 
     func insert(value : T){
-        if self.head.value == nil{
-            self.head.value = value
+        
+        if self.head == nil{
+            self.head  = Node<T>(value: value)
         }else{
-        var lastNode = self.head
-            while lastNode.next != nil{
-                lastNode = lastNode.next!
+            var lastNode = self.head
+            while lastNode?.next != nil{
+                lastNode = lastNode?.next!
             }
-            let newnode = Node<T>()
-            newnode.value = value
-            lastNode.next = newnode
+            let newnode = Node<T>(value: value)
+            lastNode?.next = newnode
         }
     }
-    func remove(value:T){
-        if self.head.value == value{
-            self.head = self.head.next!
+    func remove(value : T){
+        if head == nil{
+            print("LinkedList is Empty")
+            
         }
-        if self.head.value != nil{
-            var node = self.head
-            var previousNode = Node<T>()
-            while node.value != value && node.next != nil{
-                previousNode = node
-                node = node.next!
+        else{
+            var tempNode = self.head
+            var previousNode:Node<T>?
+            while tempNode?.next != nil && tempNode?.value != value{
+                previousNode = tempNode
+                tempNode = tempNode?.next
             }
-            if node.value == value{
-                if node.next != nil{
-                    previousNode.next = node.next
-                }else{
-                    previousNode.next = nil
-                }
+            if tempNode?.value == value{
+                previousNode?.next = tempNode?.next
             }
         }
     }
     func show(){
-        var currentNode : Node! = self.head
-        while currentNode != nil && currentNode.value != nil{
-            print("\(currentNode.value!)")
-            currentNode = currentNode.next
+        if self.head == nil{
+            print("Linked List is Empty")
+        }else{
+            var lastNode = self.head
+            while lastNode != nil{
+                if let val = lastNode?.value{
+                    print(val)
+                }
+                lastNode = lastNode?.next
+            }
+            
         }
     }
     func search(value : T)->Bool{
-
-        if head.value == value
+        if self.head == nil{
+            print("List is Empty")
+        }
+        else if head?.value == value
         {
-           return true
+            return true
         }
         else{
             var lastnode = self.head
-            while lastnode.value != value && lastnode.next != nil{
-                lastnode = lastnode.next!
+            while lastnode?.value != value && lastnode?.next != nil{
+                lastnode = lastnode?.next
             }
-            if lastnode.value == value{
+            if lastnode?.value == value{
                 return true
             }
-            else{
-                return false
-            }
-         }
+        }
+        
+        return false
+        
     }
-    
-   func getstring(list:LinkedList)->String{
+    func getstring(list : LinkedList)->String{
         var string = ""
         var lastnode = self.head
-        while  lastnode.next != nil {
-            let stringVal = String(describing: lastnode.value!)
-            string += stringVal
-            string += "\n"
-            lastnode = lastnode.next!
+        while  lastnode != nil {
+            if let stringVal = lastnode?.value{
+                string += String(describing: stringVal)
+                string += "\n"
+                lastnode = lastnode?.next
+            }
         }
-        string += String(describing: lastnode.value!)
-    return string
-}
+        
+        return string
+        
+    }
 }
